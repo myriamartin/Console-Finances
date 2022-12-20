@@ -92,9 +92,9 @@ let numberOfMonths = finances.length;
 
 //using template strings syntax: curly braces and dollar sign to output the total numberOfMonths variable
 
-console.log(`Total Months: ${numberOfMonths}`);
+//console.log(`Total Months: ${numberOfMonths}`);
 
-//The net total amount of Profit/Losses over the entire period.
+//Variables
 
 let totalProfitLoss = 0;
 let sumOfChanges = 0;
@@ -113,31 +113,32 @@ for (let i = 0; i < numberOfMonths; i++) {
     // console.log("The change in profits from month to month is", nextMonth - previousMonth);
 
     let difMonths = nextMonth - previousMonth;
-
     sumOfChanges += difMonths;
 
     if (difMonths > maxDif) {
       maxDif = difMonths;
       maxMonth = finances[i][0];
-    }
-
-    if (difMonths < minDif) {
+    } else if (difMonths < minDif) {
       minDif = difMonths;
       minMonth = finances[i][0];
     }
   }
 }
 
-console.log(`Total amount: ${totalProfitLoss}`);
+//console.log(`Total amount: ${totalProfitLoss}`);
 
-// console.log("The 2nd data type of the 1st inner array is:", finances[0][1]);
-//The average of the changes in Profit/Losses over the entire period.
+//The greatest increase and decrease in profits (date and amount) over the entire period.
 
-/*You will need to track what the total change in profits are from month to month and then find the average.
-(Total/Number of months)*/
-
-//The greatest increase in profits (date and amount) over the entire period.
-
-//The greatest decrease in losses (date and amount) over the entire period.
+let averageChange = sumOfChanges / (numberOfMonths - 1);
 
 //Analysis Results
+
+console.log(`
+Financial Analysis
+------------------
+\rTotal Months: ${numberOfMonths}
+\rTotal amount: ${totalProfitLoss}
+\rAverage Change: ${averageChange.toFixed(2)}
+\rGreatest increase in Profits: ${maxMonth} (${maxDif})
+\rGreatest decrease in Profits: ${minMonth} (${minDif})
+`);
