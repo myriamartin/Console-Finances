@@ -97,12 +97,40 @@ console.log(`Total Months: ${numberOfMonths}`);
 //The net total amount of Profit/Losses over the entire period.
 
 let totalProfitLoss = 0;
+let sumOfChanges = 0;
+let maxDif = 0;
+let minDif = 0;
+let maxMonth = "";
+let minMonth = "";
 
 for (let i = 0; i < numberOfMonths; i++) {
-  totalProfitLoss = totalProfitLoss + finances[i][1];
-}
-console.log("Total Profit/Loss $" + totalProfitLoss);
+  totalProfitLoss += finances[i][1];
 
+  if (i > 0) {
+    let nextMonth = finances[i][1];
+    let previousMonth = finances[i - 1][1];
+
+    // console.log("The change in profits from month to month is", nextMonth - previousMonth);
+
+    let difMonths = nextMonth - previousMonth;
+
+    sumOfChanges += difMonths;
+
+    if (difMonths > maxDif) {
+      maxDif = difMonths;
+      maxMonth = finances[i][0];
+    }
+
+    if (difMonths < minDif) {
+      minDif = difMonths;
+      minMonth = finances[i][0];
+    }
+  }
+}
+
+console.log(`Total amount: ${totalProfitLoss}`);
+
+// console.log("The 2nd data type of the 1st inner array is:", finances[0][1]);
 //The average of the changes in Profit/Losses over the entire period.
 
 /*You will need to track what the total change in profits are from month to month and then find the average.
