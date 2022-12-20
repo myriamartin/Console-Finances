@@ -89,7 +89,8 @@ var finances = [
 
 //The total number of months included in the dataset.
 let numberOfMonths = finances.length;
-console.log(finances.length);
+
+console.log(`Total Months: ${numberOfMonths}`);
 
 //The net total amount of Profit/Losses over the entire period.
 
@@ -103,5 +104,3 @@ console.log(finances.length);
 //The greatest decrease in losses (date and amount) over the entire period.
 
 //Analysis Results
-
-
