@@ -90,9 +90,18 @@ var finances = [
 //The total number of months included in the dataset.
 let numberOfMonths = finances.length;
 
+//using template strings syntax: curly braces and dollar sign to output the total numberOfMonths variable
+
 console.log(`Total Months: ${numberOfMonths}`);
 
 //The net total amount of Profit/Losses over the entire period.
+
+let totalProfitLoss = 0;
+
+for (let i = 0; i < numberOfMonths; i++) {
+  totalProfitLoss = totalProfitLoss + finances[i][1];
+}
+console.log("Total Profit/Loss $" + totalProfitLoss);
 
 //The average of the changes in Profit/Losses over the entire period.
 
